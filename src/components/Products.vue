@@ -6,10 +6,19 @@
 
 <script>
 export default {
-  name: 'Products',
-}
+  name: "Products",
+  mounted() {
+    this.$axios
+      .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e)
+      });
+  },
+};
 </script>
 
 <style scoped lang="scss">
-
 </style>
