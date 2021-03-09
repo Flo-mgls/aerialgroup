@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <h1>Hello World !</h1>
-  </div>
+  <article>
+    <div class="card" style="width: 18rem">
+      <slot name="image"></slot>
+      <div class="card-body">
+        <h5 class="card-title"><slot name="title"></slot></h5>
+        <p class="card-text">
+          <slot name="description"></slot>
+        </p>
+        <p class="text-muted"><slot name="price"></slot></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </article>
 </template>
 
 <script>
 export default {
   name: "Products",
-  mounted() {
-    this.$axios
-      .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((e) => {
-        console.log(e)
-      });
-  },
 };
 </script>
 
