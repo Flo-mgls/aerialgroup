@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <Products v-for="product in products" :key="product.id">
+  <div class="container">
+    <Products v-for="product in products" :key="product.id" :idProduct="product.id">
       <template v-slot:image
         ><img :src="product.image1" class="card-img-top" alt="..." />
       </template>
@@ -29,7 +28,6 @@ export default {
     this.$axios
       .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
       .then((data) => {
-        console.log(data);
         this.products = data.data;
       })
       .catch((e) => {
