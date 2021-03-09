@@ -1,8 +1,8 @@
 <template>
-  <article>
+  <article :id="idProduct">
     <div class="card mb-3">
       <span>
-      <slot name="image"></slot>
+        <slot name="image"></slot>
       </span>
       <div class="card-body">
         <h5 class="card-title"><slot name="title"></slot></h5>
@@ -12,9 +12,7 @@
         <p class="card-text">
           <slot name="price"></slot>
         </p>
-        <router-link :to="{ name: 'Product' }" class="btn btn-primary"
-          >Ajouter au panier</router-link
-        >
+        <button type="button" class="btn btn-primary" v-on:click="addToCart">Ajouter au panier</button>
       </div>
     </div>
   </article>
@@ -23,6 +21,19 @@
 <script>
 export default {
   name: "ProductDetailed",
+  props: ["idProduct"],
+  methods: {
+    addToCart () {
+      const cart = localStorage.getItem("cart");
+      if (cart === null) {
+        localStorage.setItem("cart", JSON.stringify([this.idProduct]));
+      } else {
+        const currentCart = JSON.parse(cart);
+        currentCart.push(this.idProduct);
+        localStorage.setItem("cart", JSON.stringify(currentCart));
+      }
+    }
+  }
 };
 </script>
 

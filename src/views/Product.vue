@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ProductDetailed>
+    <ProductDetailed :idProduct="product.id">
       <template v-slot:image>
         <splide :options="options">
           <splide-slide>
