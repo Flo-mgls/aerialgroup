@@ -4,13 +4,13 @@
       <template v-slot:image>
         <splide :options="options">
           <splide-slide>
-            <img :src="product.image1" class="" alt="..." />
+            <img :src="product.image1" alt="..." />
           </splide-slide>
           <splide-slide>
-            <img :src="product.image2" class="" alt="..." />
+            <img :src="product.image2" alt="..." />
           </splide-slide>
           <splide-slide>
-            <img :src="product.image3" class="" alt="..." />
+            <img :src="product.image3" alt="..." />
           </splide-slide>
         </splide>
       </template>
@@ -32,7 +32,7 @@ export default {
   components: {
     ProductDetailed,
     Splide,
-    SplideSlide
+    SplideSlide,
   },
   data: () => {
     return {
@@ -40,7 +40,7 @@ export default {
       options: {
         rewind: true,
         gap: "1rem",
-        arrows: true,
+        arrows: false,
         pagination: true,
         perPage: 1,
       },
@@ -64,9 +64,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container {
+  margin-top: 8em;
+  img {
+      border-radius: 10px;
+      height: 20em;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

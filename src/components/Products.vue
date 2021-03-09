@@ -1,13 +1,13 @@
 <template>
-  <article :id="idProduct">
-    <div class="card mb-3">
+  <article :id="idProduct" class="border-bottom">
+    <div class="card mb-3 border-0">
       <div class="row g-0 align-items-center">
         <div class="col-md-4">
           <slot name="image"></slot>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><slot name="title"></slot></h5>
+            <h2 class="card-title"><slot name="title"></slot></h2>
             <p class="card-text">
               <slot name="description"></slot>
             </p>

@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <Products v-for="product in products" :key="product.id" :idProduct="product.id">
+    <Products
+      v-for="product in products"
+      :key="product.id"
+      :idProduct="product.id"
+    >
       <template v-slot:image
         ><img :src="product.image1" class="card-img-top" alt="..." />
       </template>
@@ -36,3 +40,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.container {
+  margin-top: 8em;
+}
+</style>
