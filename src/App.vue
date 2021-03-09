@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar />
     <router-view />
   </div>
 </template>
@@ -12,8 +12,8 @@ export default {
   name: "Main",
   components: {
     NavBar,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -23,9 +23,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
-  h1, h2 {
-    font-family: 'Poiret One', cursive;
+  h1,
+  h2 {
+    font-family: "Poiret One", cursive;
     font-weight: 600;
   }
 }

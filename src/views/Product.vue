@@ -16,7 +16,7 @@
       </template>
       <template v-slot:title>{{ product.title }}</template>
       <template v-slot:description>{{ product.long_description }}</template>
-      <template v-slot:price>{{ product.price }} $</template>
+      <template v-slot:price>{{ product.price }} €</template>
     </ProductDetailed>
   </div>
 </template>
@@ -46,6 +46,8 @@ export default {
       },
     };
   },
+  methods: {
+  },
   mounted() {
     this.$axios
       .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
@@ -67,8 +69,8 @@ export default {
 .container {
   margin-top: 8em;
   img {
-      border-radius: 10px;
-      height: 20em;
+    border-radius: 10px;
+    height: 20em;
   }
   li {
     display: flex;

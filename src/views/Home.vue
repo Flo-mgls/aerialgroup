@@ -10,7 +10,7 @@
       </template>
       <template v-slot:title>{{ product.title }}</template>
       <template v-slot:description>{{ product.description }}</template>
-      <template v-slot:price>{{ product.price }} $</template>
+      <template v-slot:price>{{ product.price }} €</template>
     </Products>
   </div>
 </template>
@@ -44,5 +44,8 @@ export default {
 <style scoped lang="scss">
 .container {
   margin-top: 8em;
+  img {
+    border-radius: 5px;
+  }
 }
 </style>

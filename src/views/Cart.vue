@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <h2 class="mb-5">
+      VOTRE PANIER<span v-if="cartDisplayed.length == 0"> EST VIDE</span>
+    </h2>
     <ul class="list-group">
       <CartItem v-for="product in cartDisplayed" :key="product.title">
         <template v-slot:title>{{ product.title }}</template>
@@ -7,7 +10,12 @@
         <template v-slot:quantity>{{ product.quantity }}</template>
       </CartItem>
     </ul>
-    <p>Total: {{ totalPrice }} $</p>
+    <div v-if="cartDisplayed.length > 0" class="mt-5">
+      <p class="fw-bold">TOTAL: {{ totalPrice }} €</p>
+      <button type="button" class="btn btn-lg btn-outline-success">
+        Aller au paiement
+      </button>
+    </div>
   </div>
 </template>
 
@@ -28,21 +36,23 @@ export default {
   methods: {
     getCart() {
       const currentCart = JSON.parse(localStorage.getItem("cart"));
-      for (let i = 0; i < currentCart.length; i++) {
-        let product = currentCart[i];
-        this.cart[product] = this.cart[product] ? this.cart[product] + 1 : 1;
+      if (currentCart !== null) {
+        for (let i = 0; i < currentCart.length; i++) {
+          let product = currentCart[i];
+          this.cart[product] = this.cart[product] ? this.cart[product] + 1 : 1;
+        }
       }
     },
   },
   computed: {
-      totalPrice() {
-          let totalPrice = 0;
-          this.cartDisplayed.forEach(function(product) {
-              totalPrice += product.price * product.quantity;
-          })
+    totalPrice() {
+      let totalPrice = 0;
+      this.cartDisplayed.forEach(function (product) {
+        totalPrice += product.price * product.quantity;
+      });
 
-          return totalPrice
-      }
+      return Math.round(totalPrice * 100) / 100;
+    },
   },
   mounted() {
     this.getCart();
@@ -63,7 +73,6 @@ export default {
           product.price = productPrice;
           product.quantity = productQuantity;
           this.cartDisplayed.push(product);
-          console.log(this.cartDisplayed)
         }
       })
       .catch((e) => {
@@ -72,3 +81,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.container {
+  margin-top: 8em;
+}
+</style>
