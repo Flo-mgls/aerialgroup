@@ -15,6 +15,7 @@ npm run serve
 
 ***Fonctionnalités:***
 
+* Responsive Design
 * Page Accueil affichant les produits
 * Menu "panier" de la barre de navigation permettant de le visualiser même en dehors de la page Panier
 * Page Produit permettant d'afficher toutes les infos d'un produit
