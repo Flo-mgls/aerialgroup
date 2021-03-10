@@ -1,3 +1,5 @@
+<!-- COMPOSANT PRODUIT APPARAISSANT DANS LA VUE HOME (PAGE ACCUEIL) -->
+
 <template>
   <article :id="idProduct" class="border-bottom pt-2">
     <div class="card mb-3 border-0">
@@ -14,7 +16,11 @@
             <p class="card-text">
               <slot name="price"></slot>
             </p>
-            <router-link :to="{ name: 'Product', params: { id: idProduct }}" class="btn btn-outline-secondary btn-lg">En savoir plus</router-link>
+            <router-link
+              :to="{ name: 'Product', params: { id: idProduct } }"
+              class="btn btn-outline-secondary btn-lg"
+              >En savoir plus</router-link
+            >
           </div>
         </div>
       </div>
@@ -28,6 +34,3 @@ export default {
   props: ["idProduct"],
 };
 </script>
-
-<style scoped lang="scss">
-</style>

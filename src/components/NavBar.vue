@@ -1,6 +1,9 @@
+<!-- COMPOSANT BARRE DE NAVIGATION -->
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
+      <!-- LOGO ET BOUTON POUR PETITS ECRAN -->
       <router-link :to="{ name: 'Home' }" class="navbar-brand" href="#"
         ><img
           src="../assets/logo-ad.svg"
@@ -24,12 +27,17 @@
         class="collapse navbar-collapse justify-content-between"
         id="navbarNavDropdown"
       >
+        <!-- FIN LOGO ET BOUTON POUR PETITS ECRAN -->
+
+        <!-- BOUTON DE NAVIGATION ET TITRE -->
         <ul class="navbar-nav">
+          <!-- TITRE H1 POUR PETITS ECRANS -->
           <h1 class="d-block d-lg-none">
             <router-link :to="{ name: 'Home' }" class="navbar-brand"
               >AerialDiscount</router-link
             >
           </h1>
+          <!-- FIN TITRE H1 POUR PETITS ECRANS -->
           <li class="nav-item">
             <router-link :to="{ name: 'Home' }" class="nav-link"
               >Accueil</router-link
@@ -38,6 +46,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Mon compte</a>
           </li>
+          <!-- FIN BOUTON DE NAVIGATION -->
+
+          <!-- BOUTON PANIER -->
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -66,7 +77,7 @@
                 </div>
                 <CartItemMini
                   v-for="product in cartDisplayed"
-                  :key="product.title"
+                  :key="product.price"
                 >
                   <template v-slot:product> {{ product.title }} </template>
                   <template v-slot:quantity> {{ product.quantity }} </template>
@@ -95,12 +106,17 @@
               </div>
             </ul>
           </li>
+          <!-- FIN BOUTON PANIER -->
         </ul>
+        <!-- TITRE H1 POUR GRANDS ECRANS -->
         <h1 class="d-none d-lg-block">
           <router-link :to="{ name: 'Home' }" class="navbar-brand" href="#"
             >AerialDiscount</router-link
           >
         </h1>
+        <!-- FIN TITRE H1 POUR GRANDS ECRANS -->
+
+        <!-- BARRE DE RECHERCHE -->
         <form class="d-flex">
           <input
             class="form-control me-2"
@@ -110,6 +126,7 @@
           />
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <!-- FIN BARRE DE RECHERCHE -->
       </div>
     </div>
   </nav>
@@ -125,53 +142,20 @@ export default {
   },
   data: () => {
     return {
-      cart: {},
-      cartDisplayed: [],
+      cart: {}, // Panier brut (id, quantity)
+      cartDisplayed: [], // Panier propre (objet: title, price, quantity)
     };
   },
   methods: {
-    getCart() {
-      const currentCart = JSON.parse(localStorage.getItem("cart"));
-      if (currentCart !== null) {
-        for (let i = 0; i < currentCart.length; i++) {
-          let product = currentCart[i];
-          this.cart[product] = this.cart[product] ? this.cart[product] + 1 : 1;
-        }
-      }
-    },
-    clearCart() {
+    clearCart() { // Vide tout ce qui est en rapport avec le panier
       localStorage.removeItem("cart");
       this.cart = {};
       this.cartDisplayed = [];
     },
   },
-  mounted() {
-    this.getCart();
-    this.$axios
-      .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
-      .then((data) => {
-        const products = data.data;
-        for (const productID in this.cart) {
-          let product = {};
-          const productsFilter = products.filter(
-            (product) => product.id == productID
-          );
-          const productTitle = productsFilter[0].title;
-          const productPrice = productsFilter[0].price;
-          const productQuantity = this.cart[productID];
-
-          product.title = productTitle;
-          product.price = productPrice;
-          product.quantity = productQuantity;
-          this.cartDisplayed.push(product);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  mounted() { // Récupère les données du panier
+    this.$getCart();
+    this.$createCart();
   },
 };
 </script>
-
-<style scoped lang="scss">
-</style>

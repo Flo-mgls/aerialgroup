@@ -1,3 +1,5 @@
+<!-- VUE DU PANIER -->
+
 <template>
   <div class="container">
     <h2 class="mb-5">
@@ -29,23 +31,12 @@ export default {
   },
   data: () => {
     return {
-      cart: {},
-      cartDisplayed: [],
+      cart: {}, // Panier brut (id, quantity)
+      cartDisplayed: [], // Panier propre (objet: title, price, quantity)
     };
   },
-  methods: {
-    getCart() {
-      const currentCart = JSON.parse(localStorage.getItem("cart"));
-      if (currentCart !== null) {
-        for (let i = 0; i < currentCart.length; i++) {
-          let product = currentCart[i];
-          this.cart[product] = this.cart[product] ? this.cart[product] + 1 : 1;
-        }
-      }
-    },
-  },
   computed: {
-    totalPrice() {
+    totalPrice() { // Retourne le prix total avec max 2 décimales
       let totalPrice = 0;
       this.cartDisplayed.forEach(function (product) {
         totalPrice += product.price * product.quantity;
@@ -54,30 +45,10 @@ export default {
       return Math.round(totalPrice * 100) / 100;
     },
   },
-  mounted() {
-    this.getCart();
-    this.$axios
-      .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
-      .then((data) => {
-        const products = data.data;
-        for (const productID in this.cart) {
-          let product = {};
-          const productsFilter = products.filter(
-            (product) => product.id == productID
-          );
-          const productTitle = productsFilter[0].title;
-          const productPrice = productsFilter[0].price;
-          const productQuantity = this.cart[productID];
-
-          product.title = productTitle;
-          product.price = productPrice;
-          product.quantity = productQuantity;
-          this.cartDisplayed.push(product);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  mounted() { // Récupère les données du panier
+    document.title = "AerialDiscount | Panier";
+    this.$getCart();
+    this.$createCart();
   },
 };
 </script>

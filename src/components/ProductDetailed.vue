@@ -1,3 +1,5 @@
+<!-- COMPOSANT PRODUIT AVEC DETAILS -->
+
 <template>
   <article :id="idProduct">
     <div class="card mb-3 border-0">
@@ -29,7 +31,7 @@ export default {
   name: "ProductDetailed",
   props: ["idProduct"],
   methods: {
-    addToCart() {
+    addToCart() { // Permet l'ajout au panier
       const cart = localStorage.getItem("cart");
       if (cart === null) {
         localStorage.setItem("cart", JSON.stringify([this.idProduct]));
@@ -42,6 +44,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -1,3 +1,5 @@
+<!-- COMPOSANT PRODUIT APPARAISSANT DANS LA VUE PANIER -->
+
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <span
@@ -15,6 +17,3 @@ export default {
   name: "CartItem",
 };
 </script>
-
-<style scoped lang="scss">
-</style>

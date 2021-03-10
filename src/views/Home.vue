@@ -1,3 +1,5 @@
+<!-- VUE DE L'ACCUEIL -->
+
 <template>
   <div class="container">
     <Products
@@ -6,7 +8,7 @@
       :idProduct="product.id"
     >
       <template v-slot:image
-        ><img :src="product.image1" class="card-img-top" alt="..." />
+        ><img :src="product.image1" class="card-img-top" :alt="product.title" />
       </template>
       <template v-slot:title>{{ product.title }}</template>
       <template v-slot:description>{{ product.description }}</template>
@@ -25,10 +27,11 @@ export default {
   },
   data: () => {
     return {
-      products: [],
+      products: [], // Contient tous les produits du fichier JSON
     };
   },
-  mounted() {
+  mounted() { // Récupère les produits du fichier JSON
+    document.title = "AerialDiscount | Accueil"
     this.$axios
       .get(`https://florian-magalhaes.fr/MOCK_DATA.json`)
       .then((data) => {

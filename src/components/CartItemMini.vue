@@ -1,3 +1,5 @@
+<!-- COMPOSANT PRODUIT APPARAISSANT DANS LE BOUTON "PANIER" DU MENU DE NAVIGATION -->
+
 <template>
   <li class="border-bottom">
     <div class="d-flex justify-content-between align-items-center">
@@ -12,6 +14,3 @@ export default {
   name: "CartItemMini",
 };
 </script>
-
-<style scoped lang="scss">
-</style>
