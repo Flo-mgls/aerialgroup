@@ -1,25 +1,32 @@
-# aerialgroup
+# Aerialgroup
+**Frontend de l'exercice de recrutement par AerialGroup**
 
-## Project setup
+***Pour tester l'app:***
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
+***Principales dépendances et technos:***
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* Vue.js: v2.6.11
+* Bootstrap: v5.0.0
+* Splide: v0.3.5 -> Carrousel
+* Axios: v0.21.1
 
-### Lints and fixes files
-```
-npm run lint
-```
+***Fonctionnalités:***
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# aerialgroup
+* Page Accueil affichant les produits
+* Menu "panier" de la barre de navigation permettant de le visualiser même en dehors de la page Panier
+* Page Produit permettant d'afficher toutes les infos d'un produit
+* Page Panier montrant les produits ajoutés, leur prix à l'unité, leur quantité, et leur coût total
+
+***Remarques et axes d'améliorations:***
+
+* J'ai préféré utilisé Bootstrap pour ne pas perdre trop de temps sur le design, de plus c'est toujours un plaisir de s'en servir.
+* Concernant la partie backend sur Laravel je donne des précisions directement en mail.
+* Enfin comme principales amélioration et avec un peu plus de temps:
+  * Lorsque l'on ajoute un produit dans le panier ou si on le vide, si l'on est sur la vue Product ou Cart il faut actualiser la page pour le panier se mette à jour, ceci est mon plus grand regret mais je dois finir et l'envoyer.
+  * Rendre le code encore plus propre avec par exemple l'utilisation de Mixin.
+  * Améliorer le design
+
+***J'ai beaucoup aimé travailler sur ce projet et je vous souhaite une bonne lecture de mon code***
