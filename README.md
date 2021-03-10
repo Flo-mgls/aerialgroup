@@ -24,8 +24,8 @@ npm run serve
 
 * J'ai préféré utilisé Bootstrap pour ne pas perdre trop de temps sur le design, de plus c'est toujours un plaisir de s'en servir.
 * Concernant la partie backend sur Laravel je donne des précisions directement en mail.
-* Enfin comme principales amélioration et avec un peu plus de temps:
-  * Lorsque l'on ajoute un produit dans le panier ou si on le vide, si l'on est sur la vue Product ou Cart il faut actualiser la page pour le panier se mette à jour, ceci est mon plus grand regret mais je dois finir et l'envoyer.
+* Enfin comme principales améliorations et avec un peu plus de temps:
+  * Lorsque l'on ajoute un produit dans le panier ou si on le vide, si l'on est sur la vue Product ou Cart il faut actualiser la page pour que le panier se mette à jour, ceci est mon plus grand regret mais je dois finir et l'envoyer.
   * Rendre le code encore plus propre avec par exemple l'utilisation de Mixin.
   * Améliorer le design
 
